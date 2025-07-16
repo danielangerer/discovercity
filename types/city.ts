@@ -6,6 +6,6 @@ export interface City {
   latitude: number;
   longitude: number;
   population: number;
-  founded: number;
+  founded: string;
   landmarks: string[];
 }
