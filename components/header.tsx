@@ -14,7 +14,6 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-[#FDEECE] shadow-md">
       <div className="max-w-8xl mx-auto px-6 lg:px-8 py-1 flex justify-between items-center">
         
-        {/* Logo mit dezentem Design */}
         <Link href="/" className="flex-shrink-0">
           <Image
             src="/discovercity_logo.png"
@@ -39,7 +38,7 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Mobile Menü-Schalter */}
+        {/* Mobile burger menu */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-[#206176] p-2 rounded-md hover:bg-[#7EBABC]/20 transition"

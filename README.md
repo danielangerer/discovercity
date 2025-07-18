@@ -1,6 +1,14 @@
 ## Discovercity
 
-A fullstack Next.js app with TypeScript that displays a list of cities from a static JSON file.
+A fullstack Next.js app with TypeScript that displays a list of cities from a static JSON file.It demonstrates proficiency in building modern web applications using Next.js and TypeScript:
+
+- Fetching and displaying data from a static JSON source
+- Implementing responsive UI components
+- Managing application state effectively
+- Writing clean, maintainable code
+- Following best practices for accessibility and performance
+
+The application is designed for easy extensibility. Potential enhancements include adding city search functionality, implementing advanced filtering options, integrating external APIs, or connecting to a real database for dynamic data fetching.
 
 
 
