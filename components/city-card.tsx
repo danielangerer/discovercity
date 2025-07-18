@@ -1,7 +1,7 @@
 'use client';
-
 import { City } from '@/types/city';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function CityCard({ city }: { city: City }) {
   const citySlug = encodeURIComponent(city.name.toLowerCase());
@@ -12,10 +12,12 @@ export default function CityCard({ city }: { city: City }) {
   return (
     <Link href={`/city/${citySlug}`} className="group">
       <div className="rounded-2xl overflow-hidden shadow-lg border border-amber-200 bg-white transition transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-        <div className="h-48 w-full overflow-hidden">
-          <img
+        <div className="h-38 w-full overflow-hidden">
+          <Image
             src={imageUrl}
             alt={city.name}
+            width={400}
+            height={300}
             className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
           />
         </div>
