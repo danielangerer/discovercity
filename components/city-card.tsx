@@ -6,15 +6,14 @@ import Image from 'next/image';
 export default function CityCard({ city }: { city: City }) {
   const citySlug = encodeURIComponent(city.name.toLowerCase());
 
-  //Placeholder picture
-  const imageUrl = `https://picsum.photos/seed/${citySlug}/400/300`;
+const image = `/city_images/${citySlug.replace(/[^a-z]/g, '')}.jpg`;
 
   return (
     <Link href={`/city/${citySlug}`} className="group">
       <div className="rounded-2xl overflow-hidden shadow-lg border border-amber-200 bg-white transition transform duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div className="h-38 w-full overflow-hidden">
           <Image
-            src={imageUrl}
+            src={image}
             alt={city.name}
             width={400}
             height={300}
@@ -22,7 +21,7 @@ export default function CityCard({ city }: { city: City }) {
           />
         </div>
         <div className="p-4">
-          <h2 className="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200">
+          <h2 className="text-2xl font-bold text-[#17414f] group-hover:text-blue-600 transition-colors duration-200">
             {city.name}
           </h2>
           <p className="text-sm text-gray-500 mb-2">

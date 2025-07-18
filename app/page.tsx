@@ -18,7 +18,7 @@ export default function HomePage() {
     <div>
       <Header />
     </div>
-    <main className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <main className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#FDEECE]">
       {cities.map((city, idx) => (
       <CityCard key={idx} city={city} />
       ))}
