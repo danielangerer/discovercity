@@ -1,13 +1,45 @@
+/** @jest-config-loader ts-node */
 import nextJest from 'next/jest.js';
-const createJestConfig = nextJest({ dir: './' });
+import { pathsToModuleNameMapper } from 'ts-jest';
+import ts from 'typescript';
 
-const customConfig = {
+const { config: tsconfig } = ts.readConfigFile('./tsconfig.json', ts.sys.readFile);
+const createConfig = nextJest({ dir: './' });
+
+const common = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testEnvironment: 'jest-environment-jsdom',
+  moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
-    '^@/lib/actions/(.*)$': '<rootDir>/lib/actions/$1',
-    '^@/components/(.*)$': '<rootDir>/components/$1',
+    '^@/(.*)$': '<rootDir>/$1',                             // 🔒 manuelle Regel
+    ...pathsToModuleNameMapper(tsconfig.compilerOptions.paths ?? {}, {
+      prefix: '<rootDir>/',
+    }),
   },
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
 };
 
-export default createJestConfig(customConfig);
+const jestConfig = {
+  projects: [
+    {
+      displayName: 'api',
+      ...createConfig({
+        ...common,
+        testEnvironment: 'node',
+        testMatch: ['**/*.unit.test.{ts,js}', '**/*.api.test.{ts,js}'],
+      }),
+    },
+    {
+      displayName: 'frontend',
+      ...createConfig({
+        ...common,
+        testEnvironment: 'jest-environment-jsdom',
+        testMatch: ['**/*frontend.test.{ts,tsx,js,jsx}'],
+      }),
+    },
+  ],
+};
+
+export default jestConfig;
