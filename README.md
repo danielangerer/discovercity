@@ -10,20 +10,20 @@ A fullstack Next.js app with TypeScript that displays a list of cities from a st
 
 The application is designed for easy extensibility. Potential enhancements include adding city search functionality, implementing advanced filtering options, integrating external APIs, or connecting to a real database for dynamic data fetching.
 
+## Installation
 
+First run installation:
+
+```bash
+npm install
+```
 
 ## Getting Started
 
-First, run the development server:
+Now, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
