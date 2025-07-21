@@ -1,4 +1,3 @@
-// app/city/[name]/page.tsx
 import { getCities } from '@/lib/getCities'
 import { notFound } from 'next/navigation'
 import Layout from '@/components/layout'
@@ -7,7 +6,8 @@ import CityMap from '@/components/city-map'
 type Props = { params: { name: string } }
 
 export default async function CityPage({ params }: Props) {
-  const nameDecoded = decodeURIComponent(params.name).toLowerCase()
+  const { name } = await params
+  const nameDecoded = decodeURIComponent(name).toLowerCase()
   const cities = getCities()
   const city = cities.find(c => c.name.toLowerCase() === nameDecoded)
 
